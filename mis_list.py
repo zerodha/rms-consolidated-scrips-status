@@ -8,7 +8,6 @@
 Read RMS Consolidated scrip spreadsheet and return dictionary with allowed/non-allowed scrip
 """
 import urllib.request as request
-import codecs,csv,datetime
 import pandas as pd
 
 def mis_status():
