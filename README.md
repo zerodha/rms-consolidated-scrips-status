@@ -5,7 +5,7 @@ A utility that reads <a href="https://docs.google.com/spreadsheets/d/1ZTyh6GiHTw
 ``` 
 git clone https://github.com/zerodhatech/rms-consolidated-scrips-status.git
 import mis_list
-mis_list()
+mis_list.mis_status()
 ```
 # Sample Response
 For MIS allowed Stocks
