@@ -12,7 +12,9 @@ For MIS allowed Stocks
 ```
 {'mis_allowed': {0: {'symbol': '3MINDIA:EQ', 'multiplier': '5X'}, 1: {'symbol': 'AARTIIND:EQ', 'multiplier': '5X'},
 2: {'symbol': 'ABB:EQ', 'multiplier': '5X'}, 3: {'symbol': 'ABBOTINDIA:EQ', 'multiplier': '5X'}, 4:....}}
-
+```
 For Stocks not allowed for MIS 
+```
 {'mis_notallowed': {0: {'symbol': '21STCENMGM'}, 1: {'symbol': '3IINFOTECH'}, 2: {'symbol': '3PLAND'}, 
 3: {'symbol': '5PAISA'}, 4: {'symbol': '63MOONS'}, 5: {'symbol': '7NR'}, 6: {'symbol': '8KMILES'}...}
+```
