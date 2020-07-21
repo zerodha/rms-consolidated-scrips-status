@@ -1,20 +1,78 @@
 # rms-consolidated-scrips-status
-A utility that reads <a href="https://docs.google.com/spreadsheets/d/1ZTyh6GiHTwA1d-ApYdn5iCmRiBLZoAtwigS7VyLUk_Y/edit#gid=0">RMS Consolidated google spreadsheet</a> and returns a nested dictionary with allowed/non-allowed scrip for different product types
 
-# Basic Usage
+A utility that parse Zerodha Consolidated google spreadsheets and render category-wise scrip details(margins, multiplier, etc). 
+
+# Installation
+
 ``` 
-git clone https://github.com/zerodhatech/rms-consolidated-scrips-status.git
-import mis_list
-mis_list.mis_status()
+pip install consolidatedrms
 ```
-# Sample Response
-For MIS allowed Stocks
+
+# Usage and documentation
+
 ```
-{'mis_allowed': {0: {'symbol': '3MINDIA:EQ', 'multiplier': '5X'}, 1: {'symbol': 'AARTIIND:EQ', 'multiplier': '5X'},
-2: {'symbol': 'ABB:EQ', 'multiplier': '5X'}, 3: {'symbol': 'ABBOTINDIA:EQ', 'multiplier': '5X'}, 4:....}}
+from consolidatedrms import ConsolidatedList
+
+#Fetch allowed/banned mis scrips dict with multiplier detail for 
+#mis-allowed scrip
+
+ConsolidatedList.mis_status()
 ```
-For Stocks not allowed for MIS 
+
 ```
-{'mis_notallowed': {0: {'symbol': '21STCENMGM'}, 1: {'symbol': '3IINFOTECH'}, 2: {'symbol': '3PLAND'}, 
-3: {'symbol': '5PAISA'}, 4: {'symbol': '63MOONS'}, 5: {'symbol': '7NR'}, 6: {'symbol': '8KMILES'}...}
+{'status': 'success', 'data': {'mis_allowed': [{'symbol': '3MINDIA', 'multiplier': '5'}, {'symbol': 'AARTIIND', 'multiplier': '5'},{...}],
+'mis_banned': [{'symbol': '21STCENMGM'}, {'symbol': '3IINFOTECH'},{..}]}}
+```
+
+```
+#Fetch Var+ ELM,MIS Margin,MIS Multiplier,CO Lower Trigger,
+#CO Upper Trigger values for allowed BO/CO allowed scrip
+
+ConsolidatedList.mis_margin()
+```
+
+```
+{'status': 'success', 'data': [{'symbol': '3MINDIA', 'var+elm': 40.0, 'mis_margin': 20.0, 'multiplier': 5.0, 'co_lower': 10.0, 'co_upper': 10},..
+{...}]}
+```
+
+```
+#Fetch list of scrips allowed/non-allowed/temp banned for BO and CO
+
+ConsolidatedList.mis_boco()
+```
+
+```
+{'status': 'success', 'data': {'boco_allowed': [{'symbol': '3MINDIA'}, {'symbol': 'AARTIIND'}, {'symbol': 'ABB'},{...}]}}
+```
+
+```
+#Fetch list of scrips under Trade to Trade segment
+
+ConsolidatedList.trade2trade()
+```
+
+```
+{'status': 'success', 'data': [{'symbol': 'BAFNAPH'}, {'symbol': 'CASTEXTECH'}, {'symbol': 'JIKIND'}, {'symbol': 'JYOTISTRUC'},..,
+{...}]}
+```
+
+```
+#Fetch list of scrips under ASM (Additional Surveillance Measure)
+
+ConsolidatedList.asm_status()
+```
+
+```
+{'status': 'success', 'data': [{'symbol': '3IINFOTECH'}, {'symbol': 'AARTIDRUGS'}, {'symbol': 'ABAN'},,..{..}]}
+```
+
+```
+#Fetch list of scrips under GSM (Graded Surveillance Measure)
+
+ConsolidatedList.gsm_status()
+```
+
+```
+{'status': 'success', 'data': [{'symbol': 'ADROITINFO'}, {'symbol': 'ALPSINDUS'}, {'symbol': 'ANKITMETAL'},..,{..}]}
 ```
