@@ -13,14 +13,14 @@ pip install consolidatedrms
 ```
 from consolidatedrms import ConsolidatedList
 
-#Fetch allowed/banned mis scrips dict with multiplier detail for 
-#mis-allowed scrip
+#Fetch allowed/banned mis scrips dict with multiplier detail for mis-allowed scrip
 
 ConsolidatedList.mis_status()
 ```
 
 ```
-{'status': 'success', 'data': {'mis_allowed': [{'symbol': '3MINDIA', 'multiplier': '5'}, {'symbol': 'AARTIIND', 'multiplier': '5'},{...}],
+{'status': 'success', 'data': {'mis_allowed': [{'symbol': '3MINDIA', 'multiplier': '5'}, 
+{'symbol': 'AARTIIND', 'multiplier': '5'},{...}],
 'mis_banned': [{'symbol': '21STCENMGM'}, {'symbol': '3IINFOTECH'},{..}]}}
 ```
 
@@ -32,7 +32,8 @@ ConsolidatedList.mis_margin()
 ```
 
 ```
-{'status': 'success', 'data': [{'symbol': '3MINDIA', 'var+elm': 40.0, 'mis_margin': 20.0, 'multiplier': 5.0, 'co_lower': 10.0, 'co_upper': 10},..
+{'status': 'success', 'data': [{'symbol': '3MINDIA', 'var+elm': 40.0, 'mis_margin': 20.0, 
+'multiplier': 5.0, 'co_lower': 10.0, 'co_upper': 10},..
 {...}]}
 ```
 
@@ -43,7 +44,8 @@ ConsolidatedList.mis_boco()
 ```
 
 ```
-{'status': 'success', 'data': {'boco_allowed': [{'symbol': '3MINDIA'}, {'symbol': 'AARTIIND'}, {'symbol': 'ABB'},{...}]}}
+{'status': 'success', 'data': {'boco_allowed': [{'symbol': '3MINDIA'}, 
+{'symbol': 'AARTIIND'}, {'symbol': 'ABB'},{...}]}}
 ```
 
 ```
@@ -53,7 +55,8 @@ ConsolidatedList.trade2trade()
 ```
 
 ```
-{'status': 'success', 'data': [{'symbol': 'BAFNAPH'}, {'symbol': 'CASTEXTECH'}, {'symbol': 'JIKIND'}, {'symbol': 'JYOTISTRUC'},..,
+{'status': 'success', 'data': [{'symbol': 'BAFNAPH'}, {'symbol': 'CASTEXTECH'}, 
+{'symbol': 'JIKIND'}, {'symbol': 'JYOTISTRUC'},..,
 {...}]}
 ```
 
@@ -64,7 +67,8 @@ ConsolidatedList.asm_status()
 ```
 
 ```
-{'status': 'success', 'data': [{'symbol': '3IINFOTECH'}, {'symbol': 'AARTIDRUGS'}, {'symbol': 'ABAN'},,..{..}]}
+{'status': 'success', 'data': [{'symbol': '3IINFOTECH'}, {'symbol': 'AARTIDRUGS'}, 
+{'symbol': 'ABAN'},,..{..}]}
 ```
 
 ```
@@ -74,5 +78,6 @@ ConsolidatedList.gsm_status()
 ```
 
 ```
-{'status': 'success', 'data': [{'symbol': 'ADROITINFO'}, {'symbol': 'ALPSINDUS'}, {'symbol': 'ANKITMETAL'},..,{..}]}
+{'status': 'success', 'data': [{'symbol': 'ADROITINFO'}, {'symbol': 'ALPSINDUS'}, 
+{'symbol': 'ANKITMETAL'},..,{..}]}
 ```
