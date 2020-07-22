@@ -5,7 +5,7 @@ README = open("README.md").read()
 
 setup(
     name="consolidatedrms",  
-    version="0.2",
+    version="0.3",
     author="Rakesh R",
     author_email="rrrakesh265@gmail.com",
     description="Python library for Zerodha RMS consolidated scrips",

@@ -18,6 +18,9 @@ class ConsolidatedList(object):
     _root_url = (
         'https://docs.google.com/spreadsheets/d/1ZTyh6GiHTwA1d-ApYdn5iCmRiBLZoAtwigS7VyLUk_Y/export'
         )
+    _fo_url = (
+        'https://docs.google.com/spreadsheets/d/1fLTsNpFJPK349RTjs0GRSXJZD-5soCUkZt9eSMTJ2m4/export?gid=0&format=csv'
+        )
     _urls = {
         'mis' : '?gid=0&format=csv',
         'mis_margin' : '?gid=1058102715&format=csv',
@@ -153,6 +156,46 @@ class ConsolidatedList(object):
         Return list of scrips under GSM (Graded Surveillance Measure)
         """
         self.create_structure(self._urls['gsm'], 'Symbol')
+    
+    def fno_margin(self):
+        """
+        Return NRML Margin %,MIS Margin %,MIS Multiplier,CO Lower Margin%
+        and CO Multiplier for F&O scrip
+        """
+        try:
+            fno_stream = request.urlopen(self._fo_url)
+            col_list = ['Scrip', 'Span Expiry Date',
+                        'NRML Margin %','MIS Margin %',
+                        'MIS Multiplier','CO Lower Margin%',
+                        'CO Multiplier']
+
+            fno_df = pd.read_csv(fno_stream, 
+                    encoding='utf-8', usecols=col_list,
+                    keep_default_na=False)
+
+            fno_detail = []
+            #Exact margin specific column
+            scrips = fno_df['Scrip']
+            expiries = fno_df['Span Expiry Date']
+            nrml_per = fno_df['NRML Margin %']
+            mis_per = fno_df['MIS Margin %']
+            mis_multiplier = fno_df['MIS Multiplier']
+            co_lower_per = fno_df['CO Lower Margin%']
+            co_multiplier = fno_df['CO Multiplier']
+
+            for scrip,expiry,nrml,mis,mis_multi,lco_per,co_multi in zip(scrips,expiries,
+                                                                nrml_per,mis_per,
+                                                                mis_multiplier,
+                                                                co_lower_per,co_multiplier):
+                fno_detail.append({'symbol':scrip, 'expiry':expiry, 'nrml_margin':nrml,
+                                    'mis_margin':mis, 'mis_multiplier':mis_multi,
+                                    'co_lower':lco_per, 'co_muliplier':co_multi})
+
+            return self.format_response(fno_detail)
+
+        except Exception as e:
+            err_msg = {'error_type':type(e).__name__, 'error_msg':str(e)}
+            return self.format_response(err_msg)
     
     def create_dataframe(self,sub_url,col_list,header=0):
         """
