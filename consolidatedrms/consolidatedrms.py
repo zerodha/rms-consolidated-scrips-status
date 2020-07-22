@@ -143,19 +143,19 @@ class ConsolidatedList(object):
         """
         Return list of scrips under Trade to Trade segment
         """
-        self.create_structure(self._urls['t2t'], 'Symbol')
+        return self.create_structure(self._urls['t2t'], 'Symbol')
 
     def asm_status(self):
         """
         Return list of scrips under ASM (Additional Surveillance Measure)
         """
-        self.create_structure(self._urls['asm'], 'SYMBOL', header=1)
+        return self.create_structure(self._urls['asm'], 'SYMBOL', header=1)
 
     def gsm_status(self):
         """
         Return list of scrips under GSM (Graded Surveillance Measure)
         """
-        self.create_structure(self._urls['gsm'], 'Symbol')
+        return self.create_structure(self._urls['gsm'], 'Symbol')
     
     def fno_margin(self):
         """
